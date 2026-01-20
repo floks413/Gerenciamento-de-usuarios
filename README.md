@@ -1,2 +1,2 @@
-# Gerenciamento-de-usu-rios
+# Gerenciamento-de-usuarios
 Repositório para projeto de portfólio
