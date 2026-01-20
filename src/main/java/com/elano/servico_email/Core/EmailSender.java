@@ -1,7 +1,5 @@
 package com.elano.servico_email.Core;
 
-public class EmailSender {
-    void SendEmail(String to, String subject, String body){
-
-    }
+public interface EmailSender {
+    void sendEmail(String to, String subject, String body);
 }
