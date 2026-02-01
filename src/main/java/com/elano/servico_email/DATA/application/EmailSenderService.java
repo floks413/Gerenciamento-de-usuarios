@@ -1,4 +1,4 @@
-package com.elano.servico_email.application;
+package com.elano.servico_email.DATA.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
