@@ -10,17 +10,17 @@ public class conexaoDB {
     String usuario = "root";
     String senha = "root";
 
-    public void Conectar(){
-
-        try {
-            Connection conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conectado com o banco.");
-        } catch(SQLException ex){
-            System.out.println("Erro: " + ex.getMessage());
-        }
+    public Connection Conectar() throws SQLException{
+            return DriverManager.getConnection(url, usuario, senha);
     }
 
-    public void Desconectar(){
-
+    public void Desconectar(Connection conn){
+        try {
+            if (conn != null && !conn.isClosed()) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao desconectar: " + ex.getMessage());
+        }
     }
 }

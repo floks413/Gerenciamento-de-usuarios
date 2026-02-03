@@ -5,17 +5,17 @@ public class userDTO {
 
     public static userDTO usuarioLogado;
 
-    private int ID;
-    private String name, email, user_type, password;
+    private int ID, idade;
+    private String name, email, password;
 
     public userDTO() {
     }
 
-    public userDTO(int ID, String name, String email, String user_type, String password) {
+    public userDTO(int ID, String name, String email, int idade, String password) {
         this.ID = ID;
         this.name = name;
         this.email = email;
-        this.user_type = user_type;
+        this.idade = idade;
         this.password = password;
     }
 
@@ -43,12 +43,12 @@ public class userDTO {
         this.email = email;
     }
 
-    public String getUser_type() {
-        return user_type;
+    public int getIdade() {
+        return idade;
     }
 
-    public void setUser_type(String user_type) {
-        this.user_type = user_type;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public String getPassword() {
