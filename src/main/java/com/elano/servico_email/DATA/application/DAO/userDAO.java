@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.elano.servico_email.DATA.application.DAO.conexaoDB;
 
 public class userDAO {
@@ -13,21 +14,41 @@ public class userDAO {
     private final conexaoDB cn = new conexaoDB();
 
 
-    public boolean ConsultarE(String email){
+    public boolean ConsultarE(String email) {
         String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
 
-        try(
-            Connection conn = cn.Conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-        ){
-            stmt.setString(1,email);
+        try (
+                Connection conn = cn.Conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+        ) {
+            stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
 
             return rs.next();
 
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Erro: " + ex.getMessage());
             return false;
+        }
+    }
+
+    public boolean ConsultarC(String email, String senha) {
+        String sql = "SELECT * FROM users WHERE email = ? AND senha = ?";
+
+        try (
+                Connection conn = cn.Conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+        ) {
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException ex) {
+            System.out.println("Erro: " + ex.getMessage());
+            return false;
+
         }
     }
 
@@ -37,7 +58,7 @@ public class userDAO {
 
         Connection conn = null;
 
-        try{
+        try {
             conn = cn.Conectar();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -48,7 +69,7 @@ public class userDAO {
 
             stmt.executeUpdate();
 
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             cn.Desconectar(conn);

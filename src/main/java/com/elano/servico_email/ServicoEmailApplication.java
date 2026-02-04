@@ -26,9 +26,22 @@ public class ServicoEmailApplication {
             System.out.println("Comandos: \n1- 'login' \n2- 'registrar'");
             String e1 = sc.nextLine();
 
-            if (e1.equals("login")) {
+            if (e1.equals("1")) {
+                userDAO us = new userDAO();
 
-            } else if (e1.equals("registrar")) {
+                System.out.println("Digite o seu email: ");
+                String email = sc.nextLine();
+
+                System.out.println("Digite a sua senha: ");
+                String senha = sc.nextLine();
+
+                if(us.ConsultarC(email, senha)){
+                    System.out.println("Logado");
+                } else{
+                    System.out.println("Não logado");
+                }
+
+            } else if (e1.equals("2")) {
                 userDAO us = new userDAO();
                 Random gerador = new Random();
                 userDTO u = new userDTO();
